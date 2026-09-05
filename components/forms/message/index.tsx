@@ -1,9 +1,9 @@
 import { ChangeEvent, FormEvent, useCallback, useState } from "react";
-import { useSelector } from "react-redux";
 import { Button } from "@components/ui/button";
 import { Input } from "@components/ui/input";
 
 import { socket } from "../../../socket/socket";
+import { useAppSelector } from "../../../store/hooks";
 import { recipientIdSelector } from "../../../store/slices/chat";
 import { currentUserIdSelector } from "../../../store/slices/users";
 
@@ -11,8 +11,8 @@ import styles from "./index.module.css";
 
 export const MessageForm = () => {
     const [message, setMessage] = useState("");
-    const recepientId = useSelector(recipientIdSelector);
-    const currentUserId = useSelector(currentUserIdSelector);
+    const recepientId = useAppSelector(recipientIdSelector);
+    const currentUserId = useAppSelector(currentUserIdSelector);
 
     const onChangeMessage = useCallback(
         (event: ChangeEvent<HTMLInputElement, Element>) => {

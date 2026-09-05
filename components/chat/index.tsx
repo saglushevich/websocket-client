@@ -1,7 +1,7 @@
-import { useEffect, useMemo } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useMemo, useRef } from "react";
 
 import { socket } from "../../socket/socket";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
     currentRoomIdSelector,
     messagesSelector,
@@ -9,7 +9,7 @@ import {
     setMessages,
 } from "../../store/slices/chat";
 import { currentUserIdSelector } from "../../store/slices/users";
-import { type Message as MessageType } from "../../types/message";
+import type { Message as MessageType } from "../../types/message";
 
 import { Message } from "./message";
 
@@ -20,30 +20,26 @@ type NewMessages = {
     messages: MessageType[];
 };
 
+const getMessageKey = (message: MessageType, index: number) =>
+    `${message.roomId}_${message.time}_${message.senderId}_${index}`;
+
 export const Chat = () => {
-    const userMessages = useSelector(messagesSelector);
-    const recepientId = useSelector(recipientIdSelector);
-    const currentUserId = useSelector(currentUserIdSelector);
-    const currentRoomId = useSelector(currentRoomIdSelector);
-    const dispatch = useDispatch();
+    const userMessages = useAppSelector(messagesSelector);
+    const recipientId = useAppSelector(recipientIdSelector);
+    const currentUserId = useAppSelector(currentUserIdSelector);
+    const currentRoomId = useAppSelector(currentRoomIdSelector);
+    const dispatch = useAppDispatch();
+    const chatRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        if (currentUserId && typeof recepientId === "number") {
-            socket.emit("getMessages", currentUserId, recepientId);
+        if (currentUserId && typeof recipientId === "number") {
+            socket.emit("getMessages", currentUserId, recipientId);
         }
-    }, [currentUserId, recepientId]);
-
-    useEffect(() => {
-        socket.off("userMessages");
-
-        return () => {
-            socket.off("userMessages");
-        };
-    }, []);
+    }, [currentUserId, recipientId]);
 
     useEffect(() => {
         const handleNewMessages = ({ roomId, messages }: NewMessages) => {
-            if (currentRoomId == roomId) {
+            if (currentRoomId === roomId) {
                 dispatch(setMessages(messages));
             }
         };
@@ -55,16 +51,29 @@ export const Chat = () => {
         };
     }, [currentRoomId, dispatch]);
 
-    const messages = useMemo(() => {
-        return userMessages?.map((message) => (
-            <Message
-                key={`${message.roomId}_${message.time}`}
-                mine={currentUserId === message.senderId}
-                text={message.message}
-                time={message.time}
-            />
-        ));
-    }, [currentUserId, userMessages]);
+    useEffect(() => {
+        const el = chatRef.current;
+        if (el) {
+            el.scrollTop = el.scrollHeight;
+        }
+    }, [userMessages]);
 
-    return <div className={styles.chat}>{messages}</div>;
+    const messages = useMemo(
+        () =>
+            userMessages.map((message, index) => (
+                <Message
+                    key={getMessageKey(message, index)}
+                    mine={currentUserId === message.senderId}
+                    text={message.message}
+                    time={message.time}
+                />
+            )),
+        [currentUserId, userMessages]
+    );
+
+    return (
+        <div className={styles.chat} ref={chatRef}>
+            {messages}
+        </div>
+    );
 };

@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-import { Message } from "../../types/message";
+import type { Message } from "../../types/message";
 
 type Recipient = {
     userId: number;
@@ -24,7 +24,7 @@ const chatSlice = createSlice({
         setCurrentRoomId: (state, action: PayloadAction<string>) => {
             state.currentRoomId = action.payload;
         },
-        setRecepient: (state, action: PayloadAction<Recipient>) => {
+        setRecipient: (state, action: PayloadAction<Recipient>) => {
             state.recipient = action.payload;
         },
         setMessages: (state, action: PayloadAction<Message[]>) => {
@@ -44,7 +44,7 @@ const chatSlice = createSlice({
     },
 });
 
-export const { setCurrentRoomId, setRecepient, setMessages, clearChat } =
+export const { setCurrentRoomId, setRecipient, setMessages, clearChat } =
     chatSlice.actions;
 export const {
     currentRoomIdSelector,

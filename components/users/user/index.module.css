@@ -4,9 +4,14 @@
     background: var(--base-color);
     margin-bottom: var(--spacing-s);
     cursor: pointer;
+    width: 100%;
+    border: none;
+    text-align: left;
+    font: inherit;
+    color: var(--text);
 }
 
 .name {
     font-size: var(--font-l);
-    color: var(--text);
+    color: inherit;
 }

@@ -1,11 +1,10 @@
-import { useSelector } from "react-redux";
-
+import { useAppSelector } from "../../store/hooks";
 import { recipientSelector } from "../../store/slices/chat";
 
 import styles from "./index.module.css";
 
 export const RecipientInfo = () => {
-    const recipient = useSelector(recipientSelector);
+    const recipient = useAppSelector(recipientSelector);
 
     if (!recipient) {
         return null;

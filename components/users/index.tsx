@@ -1,29 +1,29 @@
 "use client";
 import { useCallback, useEffect, useMemo } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 import { getRoomId } from "../../lib/room";
 import { socket } from "../../socket/socket";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
     clearChat,
     setCurrentRoomId,
-    setRecepient,
+    setRecipient,
 } from "../../store/slices/chat";
 import {
     currentUserIdSelector,
     setUsers,
     usersSelector,
 } from "../../store/slices/users";
-import { User as UserType } from "../../types/user";
+import type { User as UserType } from "../../types/user";
 
 import { User } from "./user";
 
 import styles from "./index.module.css";
 
 export const Users = () => {
-    const currentUserId = useSelector(currentUserIdSelector);
-    const users = useSelector(usersSelector);
-    const dispatch = useDispatch();
+    const currentUserId = useAppSelector(currentUserIdSelector);
+    const users = useAppSelector(usersSelector);
+    const dispatch = useAppDispatch();
 
     const handleUsersList = useCallback(
         (data: UserType[]) => {
@@ -53,11 +53,12 @@ export const Users = () => {
             const roomId = getRoomId(currentUserId, user.userId);
 
             socket.emit("joinRoom", roomId);
-            socket.emit("getMessages", currentUserId, user.userId);
 
             dispatch(clearChat());
             dispatch(setCurrentRoomId(roomId));
-            dispatch(setRecepient(user));
+            dispatch(setRecipient(user));
+
+            socket.emit("getMessages", currentUserId, user.userId);
         },
         [currentUserId, dispatch]
     );
