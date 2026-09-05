@@ -1,0 +1,16 @@
+.button {
+    display: block;
+    padding: var(--spacing-l) var(--spacing-4xl);
+    background: var(--accent);
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+    border-radius: var(--border-medium);
+    color: var(--base-color);
+    font-size: var(--font-l);
+    font-weight: 500;
+
+    &:hover {
+        background: var(--accent-hover);
+    }
+}

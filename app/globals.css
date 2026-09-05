@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-roboto);
+}
+
+:root {
+    --spacing-xxs: 2px;
+    --spacing-xs: 4px;
+    --spacing-s: 8px;
+    --spacing-m: 12px;
+    --spacing-l: 16px;
+    --spacing-xl: 24px;
+    --spacing-2xl: 32px;
+    --spacing-3xl: 40px;
+    --spacing-4xl: 52px;
+    --spacing-5xl: 64px;
+
+    --border-small: 4px;
+    --border-medium: 8px;
+    --border-large: 16px;
+
+    --font-s: 12px;
+    --font-m: 16px;
+    --font-l: 20px;
+    --font-xl: 24px;
+    --font-2xl: 32px;
+
+    --base-color: #ffffff;
+    --bg-blocks: #f1f3f5;
+    --text: #1a1a1a;
+    --text-secondary: #6b7280;
+    --accent: #3b82f6;
+    --accent-hover: #2563eb;
+    --border: #e5e7eb;
+    --message-mine: #dbeafe;
+    --message-other: #f3f4f6;
+    --input-border: #d1d5db;
+
+    --shadow-modal: 0 20px 60px rgba(0, 0, 0, 0.25);
+}

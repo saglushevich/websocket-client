@@ -1,0 +1,12 @@
+.wrapper {
+    border-radius: var(--border-medium);
+    padding: var(--spacing-l) var(--spacing-l);
+    background: var(--base-color);
+    margin-bottom: var(--spacing-s);
+    cursor: pointer;
+}
+
+.name {
+    font-size: var(--font-l);
+    color: var(--text);
+}

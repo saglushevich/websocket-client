@@ -1,0 +1,17 @@
+.wrapper {
+    width: 350px;
+    background: var(--bg-blocks);
+    border-radius: var(--border-medium);
+    padding: var(--spacing-s);
+    height: 100%;
+}
+
+.message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: var(--text-secondary);
+    font-size: var(--font-xl);
+    font-weight: 600;
+}

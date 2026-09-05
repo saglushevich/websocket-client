@@ -1,0 +1,27 @@
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    padding: var(--spacing-4xl) var(--spacing-5xl);
+    border-radius: var(--border-large);
+    box-shadow: var(--shadow-modal);
+    max-width: 550px;
+    border-color: var(--border);
+}
+
+.title {
+    font-weight: 500;
+    font-size: var(--font-xl);
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+    color: var(--text);
+}
+
+.button {
+    margin: var(--spacing-xl) auto 0;
+}

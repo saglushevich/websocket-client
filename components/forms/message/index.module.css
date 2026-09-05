@@ -1,0 +1,14 @@
+.form {
+    padding: var(--spacing-xl) var(--spacing-m);
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.button {
+    margin-left: var(--spacing-l);
+}
+
+.input {
+    width: 100%;
+}

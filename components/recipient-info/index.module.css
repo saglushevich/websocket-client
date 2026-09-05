@@ -1,0 +1,20 @@
+.wrapper {
+    padding: 0 var(--spacing-m);
+}
+
+.content {
+    background: var(--base-color);
+    border-radius: var(--border-medium);
+    padding: var(--spacing-m);
+    border: 3px solid var(--bg-blocks);
+}
+
+.userName {
+    font-size: var(--font-l);
+    color: var(--text-secondary);
+}
+
+.userName span {
+    font-size: var(--font-l);
+    color: var(--accent);
+}

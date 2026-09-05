@@ -1,0 +1,5 @@
+.chat {
+    height: 76vh;
+    overflow: scroll;
+    padding: 0 var(--spacing-m);
+}
