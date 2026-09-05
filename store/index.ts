@@ -1,6 +1,7 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import userReducer from "./slices/users";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+
 import chatReducer from "./slices/chat";
+import userReducer from "./slices/users";
 
 const rootReducer = combineReducers({
     users: userReducer,

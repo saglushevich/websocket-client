@@ -1,21 +1,24 @@
 "use client";
-import styles from "./index.module.css";
-import { User } from "./user";
-import { socket } from "../../socket/socket";
 import { useCallback, useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
+import { getRoomId } from "../../lib/room";
+import { socket } from "../../socket/socket";
+import {
+    clearChat,
+    setCurrentRoomId,
+    setRecepient,
+} from "../../store/slices/chat";
 import {
     currentUserIdSelector,
     setUsers,
     usersSelector,
 } from "../../store/slices/users";
-import {
-    setCurrentRoomId,
-    setRecepient,
-    clearChat,
-} from "../../store/slices/chat";
-import { getRoomId } from "../../lib/room";
 import { User as UserType } from "../../types/user";
+
+import { User } from "./user";
+
+import styles from "./index.module.css";
 
 export const Users = () => {
     const currentUserId = useSelector(currentUserIdSelector);
@@ -26,7 +29,7 @@ export const Users = () => {
         (data: UserType[]) => {
             dispatch(setUsers(data));
         },
-        [dispatch],
+        [dispatch]
     );
 
     useEffect(() => {
@@ -56,7 +59,7 @@ export const Users = () => {
             dispatch(setCurrentRoomId(roomId));
             dispatch(setRecepient(user));
         },
-        [currentUserId, dispatch],
+        [currentUserId, dispatch]
     );
 
     const usersList = useMemo(() => {

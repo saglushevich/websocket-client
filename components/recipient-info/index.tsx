@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux";
+
 import { recipientSelector } from "../../store/slices/chat";
+
 import styles from "./index.module.css";
 
 export const RecipientInfo = () => {

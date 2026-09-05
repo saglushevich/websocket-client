@@ -1,14 +1,16 @@
 "use client";
-import { Users } from "@components/users";
-import { MessageForm } from "@components/forms/message";
-import styles from "./index.module.css";
-import { Chat } from "@components/chat";
-import { useSelector } from "react-redux";
-import { currentUserIdSelector } from "../../store/slices/users";
-import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { recipientIdSelector } from "../../store/slices/chat";
+import { useSelector } from "react-redux";
+import { Chat } from "@components/chat";
+import { MessageForm } from "@components/forms/message";
 import { RecipientInfo } from "@components/recipient-info";
+import { Users } from "@components/users";
+import { useRouter } from "next/navigation";
+
+import { recipientIdSelector } from "../../store/slices/chat";
+import { currentUserIdSelector } from "../../store/slices/users";
+
+import styles from "./index.module.css";
 
 export default function Chats() {
     const currentUserId = useSelector(currentUserIdSelector);

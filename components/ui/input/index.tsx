@@ -1,7 +1,8 @@
-import cn from "classnames";
+import { ChangeEvent } from "react";
 
 import styles from "./index.module.css";
-import { ChangeEvent } from "react";
+
+import cn from "classnames";
 
 type Props = {
     className?: string;

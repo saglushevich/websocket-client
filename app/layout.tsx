@@ -1,9 +1,11 @@
 "use client";
+import { Provider } from "react-redux";
 import { Roboto } from "next/font/google";
+
+import { store } from "../store";
+
 import "./globals.css";
 import styles from "./index.module.css";
-import { Provider } from "react-redux";
-import { store } from "../store";
 
 const robotoFont = Roboto({
     variable: "--font-roboto",

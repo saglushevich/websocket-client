@@ -1,16 +1,19 @@
 import { useEffect, useMemo } from "react";
-import styles from "./index.module.css";
-import { Message } from "./message";
-import { type Message as MessageType } from "../../types/message";
 import { useDispatch, useSelector } from "react-redux";
+
+import { socket } from "../../socket/socket";
 import {
     currentRoomIdSelector,
     messagesSelector,
     recipientIdSelector,
     setMessages,
 } from "../../store/slices/chat";
-import { socket } from "../../socket/socket";
 import { currentUserIdSelector } from "../../store/slices/users";
+import { type Message as MessageType } from "../../types/message";
+
+import { Message } from "./message";
+
+import styles from "./index.module.css";
 
 type NewMessages = {
     roomId: string;

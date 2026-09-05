@@ -1,12 +1,14 @@
 "use client";
-import styles from "./index.module.css";
-import { Input } from "@components/ui/input";
-import { Button } from "@components/ui/button";
-import { socket } from "../../../socket/socket";
-import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { setCurrentUserId } from "../../../store/slices/users";
+import { Button } from "@components/ui/button";
+import { Input } from "@components/ui/input";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+import { socket } from "../../../socket/socket";
+import { setCurrentUserId } from "../../../store/slices/users";
+
+import styles from "./index.module.css";
 
 export const LoginForm = () => {
     const router = useRouter();
