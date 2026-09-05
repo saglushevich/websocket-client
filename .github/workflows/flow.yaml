@@ -1,0 +1,17 @@
+name: "Websocket flow"
+
+on: push
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: install depts
+              run: yarn install
+            - name: run build
+              run: yarn build
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+            - name: lint
+              run: yarn lint
