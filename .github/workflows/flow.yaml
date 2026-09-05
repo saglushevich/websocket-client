@@ -6,6 +6,8 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
             - name: install depts
               run: yarn install
             - name: run build
@@ -13,6 +15,8 @@ jobs:
     lint:
         runs-on: ubuntu-latest
         steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
             - name: install depts
               run: yarn install
             - name: lint
