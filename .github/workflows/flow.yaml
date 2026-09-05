@@ -13,5 +13,7 @@ jobs:
     lint:
         runs-on: ubuntu-latest
         steps:
+            - name: install depts
+              run: yarn install
             - name: lint
               run: yarn lint
