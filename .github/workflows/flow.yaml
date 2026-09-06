@@ -4,27 +4,51 @@ on: push
 
 jobs:
     install:
-        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                os: [ubuntu-latest, macos-latest]
+                node-version: [18.x, 20.x]
+        runs-on: ${{matrix.os}}
         steps:
             - name: Checkout repository
               uses: actions/checkout@v4
+            - name: install node-version
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ matrix.node-version }}
             - name: install depts
               run: yarn install
 
     lint:
-        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                os: [ubuntu-latest, macos-latest]
+                node-version: [18.x, 20.x]
+        runs-on: ${{matrix.os}}
         steps:
             - name: Checkout repository
               uses: actions/checkout@v4
+            - name: setup node-version
+              uses: actions/setup-node
+              with:
+                  node-version: ${{matrix.node-version}}
             - name: install depts
               run: yarn install
             - name: lint
               run: yarn lint
     build:
-        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                os: [ubuntu-latest, macos-latest]
+                node-version: [18.x, 20.x]
+        runs-on: ${{matrix.os}}
         steps:
             - name: Checkout repository
               uses: actions/checkout@v4
+            - name: setup node-version
+              uses: actions/setup-node
+              with:
+                  node-version: ${{matrix.node-version}}
             - name: install depts
               run: yarn install
             - name: run build
