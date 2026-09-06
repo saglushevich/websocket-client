@@ -8,50 +8,24 @@ jobs:
         steps:
             - name: Checkout repository
               uses: actions/checkout@v4
-
-            - name: Setup Node.js
-              uses: actions/setup-node@v4
-              with:
-                  node-version: "18"
-                  cache: "yarn"
-
-            - name: Install dependencies
+            - name: install depts
               run: yarn install
 
     lint:
-        needs: install
         runs-on: ubuntu-latest
         steps:
             - name: Checkout repository
               uses: actions/checkout@v4
-
-            - name: Setup Node.js
-              uses: actions/setup-node@v4
-              with:
-                  node-version: "18"
-                  cache: "yarn"
-
-            - name: Install dependencies
+            - name: install depts
               run: yarn install
-
-            - name: Lint
+            - name: lint
               run: yarn lint
-
     build:
-        needs: install
         runs-on: ubuntu-latest
         steps:
             - name: Checkout repository
               uses: actions/checkout@v4
-
-            - name: Setup Node.js
-              uses: actions/setup-node@v4
-              with:
-                  node-version: "18"
-                  cache: "yarn"
-
-            - name: Install dependencies
+            - name: install depts
               run: yarn install
-
-            - name: Build
+            - name: run build
               run: yarn build
